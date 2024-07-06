@@ -6,7 +6,7 @@ with the efficiency of O(log(n)).
 
 An overview video can be found here:
 
-A paper on the matter can be found here:
+A paper i wrote on the matter can be found here:
 https://drive.google.com/uc?export=download&id=1qZvuJ__1ZDoVX_ME-cbxDOYdjHSBlBtL
 
 # Bistro-Demo-Tweaked
