@@ -1,3 +1,14 @@
+# JFA_driven_motion_blur_demo
+An interactive environment for showcasing, testing, and benchmarking my implementation of a per-object motion blur.
+
+This utilizes the Jump Flood Algorithm for a velocity dilation pass prior to blurring for high quality, high range, and high detail motion blur effect,
+with the efficiency of O(log(n)).
+
+An overview video can be found here:
+
+A paper on the matter can be found here:
+https://drive.google.com/uc?export=download&id=1qZvuJ__1ZDoVX_ME-cbxDOYdjHSBlBtL
+
 # Bistro-Demo-Tweaked
 Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
 
