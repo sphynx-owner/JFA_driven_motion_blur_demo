@@ -9,17 +9,17 @@ class_name MotionBlurSphynxJumpFlood
 @export_range(0, 1) var motion_blur_center_fade: float = 0.0
 
 
-@export var blur_shader_file : RDShaderFile = preload("res://MyJumpFloodIteration/jump_flood_blur.glsl"):
+@export var blur_shader_file : RDShaderFile = preload("res://addons/JFA_driven_motion_blur/jump_flood_blur.glsl"):
 	set(value):
 		blur_shader_file = value
 		_init()
 
-@export var overlay_shader_file : RDShaderFile = preload("res://MyJumpFloodIteration/jump_flood_overlay.glsl"):
+@export var overlay_shader_file : RDShaderFile = preload("res://addons/JFA_driven_motion_blur/jump_flood_overlay.glsl"):
 	set(value):
 		overlay_shader_file = value
 		_init()
 
-@export var construction_pass : RDShaderFile = preload("res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl"):
+@export var construction_pass : RDShaderFile = preload("res://addons/JFA_driven_motion_blur/jfp_backtracking_experimental.glsl"):
 	set(value):
 		construction_pass = value
 		_init()
