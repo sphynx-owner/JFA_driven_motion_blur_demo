@@ -102,6 +102,7 @@ backtracking_velocity_match_parallel_sensitivity = 0.5
 backtracking_velcoity_match_perpendicular_sensitivity = 0.1
 JFA_pass_count = 3
 framerate_independent = true
+uncapped_independence = false
 target_constant_framerate = 30.0
 
 [sub_resource type="Compositor" id="Compositor_ak7ke"]
