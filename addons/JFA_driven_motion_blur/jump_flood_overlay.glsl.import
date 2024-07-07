@@ -2,13 +2,13 @@
 
 importer="glsl"
 type="RDShaderFile"
-uid="uid://bc2dlayo43x06"
-path="res://.godot/imported/jump_flood_overlay.glsl-764d3c488a9e9576eab825591e868325.res"
+uid="uid://b5t02et6687be"
+path="res://.godot/imported/jump_flood_overlay.glsl-c36be8b5631b43df61f72fd339a3d303.res"
 
 [deps]
 
-source_file="res://MyJumpFloodIteration/jump_flood_overlay.glsl"
-dest_files=["res://.godot/imported/jump_flood_overlay.glsl-764d3c488a9e9576eab825591e868325.res"]
+source_file="res://addons/JFA_driven_motion_blur/jump_flood_overlay.glsl"
+dest_files=["res://.godot/imported/jump_flood_overlay.glsl-c36be8b5631b43df61f72fd339a3d303.res"]
 
 [params]
 
