@@ -12,6 +12,12 @@ var all_fps : Array[int] = [
 
 var fps_index : int = 0
 
+func _ready():
+	var motion_blur_effect = compositor.compositor_effects[0]
+	
+	iteration_count = motion_blur_effect.JFA_pass_count
+	$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
+
 func _input(event: InputEvent) -> void:
 	#if Input.is_action_just_pressed("SPACE"):
 		#compositor.compositor_effects[0].enabled = !compositor.compositor_effects[0].enabled
@@ -27,14 +33,14 @@ func _input(event: InputEvent) -> void:
 		iteration_count -= 1
 		iteration_count = clamp(iteration_count, 1, 11)
 		
-		motion_blur_effect.iteration_count = iteration_count
+		motion_blur_effect.JFA_pass_count = iteration_count
 		$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
 	
 	if Input.is_action_just_pressed("right"):
 		iteration_count += 1
 		iteration_count = clamp(iteration_count, 1, 11)
 		
-		motion_blur_effect.iteration_count = iteration_count
+		motion_blur_effect.JFA_pass_count = iteration_count
 		$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
 	
 	if Input.is_action_just_pressed("SPACE"):

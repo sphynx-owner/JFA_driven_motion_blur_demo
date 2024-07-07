@@ -5,7 +5,7 @@ class_name MotionBlurSphynxJumpFlood
 # diminishing returns over 16
 @export_range(4, 64) var motion_blur_samples: int = 8
 # you really don't want this over 0.5, but you can if you want to try
-@export_range(0, 0.5, 0.001, "or_greater") var motion_blur_intensity: float = 0.25
+@export_range(0, 0.5, 0.001, "or_greater") var motion_blur_intensity: float = 1
 @export_range(0, 1) var motion_blur_center_fade: float = 0.0
 
 
@@ -24,12 +24,38 @@ class_name MotionBlurSphynxJumpFlood
 		construction_pass = value
 		_init()
 
-@export var perpen_error_threshold : float = 0.5
-@export var sample_step_multiplier : float = 4
+## the portion of speed that is allowed for side bleed of velocities 
+## during the jfa dilation passes and before backtracking. Getting this a higher value
+## would make it so that meshes at movement blur more reliably, but also bleed 
+## further perpendicularly to their velocity, thus wash elemets behind them out.
+@export var perpen_error_threshold : float = 0.3
 
-@export var backtracking_velocity_match_threshold : float = 0.2
-@export var backtracking_velocity_match_parallel_sensitivity : float = 1;
-@export var backtracking_velcoity_match_perpendicular_sensitivity : float = 0.2;
+## an initial step size that can increase the dilation radius proportionally, at the 
+## sacrifice of some quality in the final resolution of the dilation
+@export var sample_step_multiplier : float = 8
+
+## how sensitive the backtracking for velocities be
+@export var backtracking_velocity_match_threshold : float = 0.49
+
+## how sensitively the backtracking should treat velocities that are a different
+## length along that velocity
+@export var backtracking_velocity_match_parallel_sensitivity : float = 0.5;
+
+## how sensitively the backtracking should treat velcoities that have perpendicular
+## offset to that velocity
+@export var backtracking_velcoity_match_perpendicular_sensitivity : float = 0.1;
+
+## the number of passes performed by the jump flood algorithm based dilation, 
+## each pass added doubles the maximum radius of dilation available
+@export var JFA_pass_count : int = 3
+
+## wether this motion blur stays the same intensity below
+## target_constant_framerate
+@export var framerate_independent : bool = true
+
+## if framerate_independent is enabled, the blur would simulate 
+## sutter speeds at that framerate, and up.
+@export var target_constant_framerate : float = 30
 
 var rd: RenderingDevice
 
@@ -54,8 +80,6 @@ var past_color : StringName = "past_color"
 
 var velocity_3D : StringName = "velocity_3D"
 var velocity_curl : StringName = "velocity_curl"
-
-var iteration_count : int = 3
 
 var draw_debug : float = 0
 
@@ -114,7 +138,25 @@ func get_sampler_uniform(image: RID, binding: int) -> RDUniform:
 	uniform.add_id(image)
 	return uniform
 
+
+
+var temp_motion_blur_intensity : float
+
+var previous_time : float = 0
+
 func _render_callback(p_effect_callback_type, p_render_data):
+	var time : float = float(Time.get_ticks_msec()) / 1000
+	
+	var delta_time : float = time - previous_time
+	
+	previous_time = time
+	
+	temp_motion_blur_intensity = motion_blur_intensity
+	
+	if framerate_independent:
+		var capped_frame_time : float = min(1 / target_constant_framerate, delta_time)
+		temp_motion_blur_intensity = motion_blur_intensity * capped_frame_time / delta_time
+	
 	if rd and p_effect_callback_type == CompositorEffect.EFFECT_CALLBACK_TYPE_POST_TRANSPARENT:
 		var render_scene_buffers: RenderSceneBuffersRD = p_render_data.get_render_scene_buffers()
 		var render_scene_data: RenderSceneDataRD = p_render_data.get_render_scene_data()
@@ -130,10 +172,10 @@ func _render_callback(p_effect_callback_type, p_render_data):
 
 			rd.draw_command_begin_label("Motion Blur", Color(1.0, 1.0, 1.0, 1.0))
 			
-			var last_iteration_index : int = iteration_count - 1;
+			var last_iteration_index : int = JFA_pass_count - 1;
 			
 			var push_constant: PackedFloat32Array = [
-				motion_blur_samples, motion_blur_intensity,
+				motion_blur_samples, temp_motion_blur_intensity,
 				motion_blur_center_fade, draw_debug,
 				freeze, 
 				Engine.get_frames_drawn() % 8, 
@@ -169,7 +211,7 @@ func _render_callback(p_effect_callback_type, p_render_data):
 				rd.compute_list_bind_compute_pipeline(compute_list, construct_pipeline)
 				rd.compute_list_bind_uniform_set(compute_list, tex_uniform_set, 0)
 				
-				for i in iteration_count:
+				for i in JFA_pass_count:
 					var jf_push_constants : PackedInt32Array = [
 						i,
 						last_iteration_index,
@@ -180,7 +222,7 @@ func _render_callback(p_effect_callback_type, p_render_data):
 					var jf_float_push_constants_test : PackedFloat32Array = [
 						perpen_error_threshold,
 						sample_step_multiplier,
-						motion_blur_intensity,
+						temp_motion_blur_intensity,
 						backtracking_velocity_match_threshold,
 						backtracking_velocity_match_parallel_sensitivity,
 						backtracking_velcoity_match_perpendicular_sensitivity,
