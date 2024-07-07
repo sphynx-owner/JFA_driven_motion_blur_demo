@@ -796,10 +796,11 @@ offset_left = -370.0
 offset_bottom = 101.0
 grow_horizontal = 0
 theme_override_constants/outline_size = 5
-text = "up and down arrows: cycle through frame limits
-left and right: cycle through pass counts
-z: toggle debug view
-x: freeze frame"
+text = "Up and Down arrows: cycle through frame limits
+Left and Right arrows: cycle through pass counts
+Z: toggle debug view
+X: freeze frame
+T: Toggle motion blur"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="UI"]
 environment = ExtResource("33_vhloy")

@@ -55,6 +55,9 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("freeze"):
 		motion_blur_effect.freeze = !motion_blur_effect.freeze
+	
+	if Input.is_action_just_pressed("T"):
+		motion_blur_effect.enabled = !motion_blur_effect.enabled
 
 func _process(delta: float) -> void:
 	$"../Control/VBoxContainer/HBoxContainer2/fps".text = str(Engine.get_frames_per_second())
