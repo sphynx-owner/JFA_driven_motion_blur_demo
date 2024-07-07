@@ -7,9 +7,11 @@ with the efficiency of O(log(n)).
 An overview video can be found here:
 https://youtu.be/m_KvYlYF3sA
 
-A paper i wrote on the matter can be found here:
+A paper I wrote on the matter can be found here:
 [Using the Jump Flood Algorithm to Dilate Velocity Maps in the application of Believable High Range High Fidelity Motion Blur 7_7_24 (2) - Google Docs.pdf](https://github.com/user-attachments/files/16118920/Using.the.Jump.Flood.Algorithm.to.Dilate.Velocity.Maps.in.the.application.of.Believable.High.Range.High.Fidelity.Motion.Blur.7_7_24.2.-.Google.Docs.pdf)
 
+An addon can be found here:
+https://github.com/sphynx-owner/JFA_driven_motion_blur_addon/tree/master
 
 # Bistro-Demo-Tweaked
 Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
