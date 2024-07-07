@@ -5,9 +5,11 @@ This utilizes the Jump Flood Algorithm for a velocity dilation pass prior to blu
 with the efficiency of O(log(n)).
 
 An overview video can be found here:
+https://youtu.be/m_KvYlYF3sA
 
-A paper i wrote on the matter can be found here:[
-https://drive.google.com/uc?export=download&id=1qZvuJ__1ZDoVX_ME-cbxDOYdjHSBlBtL](https://drive.google.com/uc?export=download&id=1ft5pR6mKaUuvqq4nONfgogCbxcTWKDVQ)
+A paper i wrote on the matter can be found here:
+[Using the Jump Flood Algorithm to Dilate Velocity Maps in the application of Believable High Range High Fidelity Motion Blur 7_7_24 (2) - Google Docs.pdf](https://github.com/user-attachments/files/16118920/Using.the.Jump.Flood.Algorithm.to.Dilate.Velocity.Maps.in.the.application.of.Believable.High.Range.High.Fidelity.Motion.Blur.7_7_24.2.-.Google.Docs.pdf)
+
 
 # Bistro-Demo-Tweaked
 Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
