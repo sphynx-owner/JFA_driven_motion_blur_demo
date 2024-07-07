@@ -15,12 +15,16 @@ layout(push_constant, std430) uniform Params
 {
 	int iteration_index;
 	int last_iteration_index;
-	int nan2;
-	int nan3;	
+	int nan1;
+	int nan2;	
 	float perpen_error_thresh;
 	float sample_step_multiplier;
 	float motion_blur_intensity;
-	float nan5;
+	float velocity_match_threshold;
+	float parallel_sensitivity;
+	float perpendicular_sensitivity;
+	float nan3;
+	float nan4;
 } params;
 
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
@@ -74,11 +78,14 @@ void set_value(bool a, ivec2 uvi, vec4 value, ivec2 render_size)
 
 // Motion similarity 
 // ----------------------------------------------------------
-float get_motion_difference(vec2 V, vec2 V2, float power)
+float get_motion_difference(vec2 V, vec2 V2, float parallel_sensitivity, float perpendicular_sensitivity)
 {
 	vec2 VO = V - V2;
-	float difference = length(VO) / length(V) / 4 + abs(dot(VO, V) / max(FLT_MIN, dot(V, V)));
-	return pow(clamp(difference, 0, 1), power);
+	double parallel = abs(dot(VO, V) / max(DBL_MIN, dot(V, V)));
+	vec2 perpen_V = vec2(V.y, -V.x);
+	double perpendicular = abs(dot(VO, perpen_V) / max(DBL_MIN, dot(V, V)));
+	float difference = float(parallel) * parallel_sensitivity + float(perpendicular) * perpendicular_sensitivity;
+	return clamp(difference, 0, 1);
 }
 // ----------------------------------------------------------
 
@@ -131,8 +138,6 @@ vec4 get_backtracked_sample(vec2 uvn, vec2 chosen_uv, vec2 chosen_velocity, vec4
 	
 	int step_count = 16;
 
-	float velocity_match_threshold = 0.2;
-
 	float smallest_step = 1 / max(render_size.x, render_size.y);
 
 	float max_dilation_radius = pow(2, params.last_iteration_index) * params.sample_step_multiplier * smallest_step / (length(chosen_velocity) * params.motion_blur_intensity);
@@ -157,7 +162,7 @@ vec4 get_backtracked_sample(vec2 uvn, vec2 chosen_uv, vec2 chosen_velocity, vec4
 
 		vec2 velocity_test = textureLod(velocity_sampler, new_sample, 0.0).xy;
 		
-		if(get_motion_difference(chosen_velocity, velocity_test, 1) <= velocity_match_threshold)
+		if(get_motion_difference(chosen_velocity, velocity_test, params.parallel_sensitivity, params.perpendicular_sensitivity) <= params.velocity_match_threshold)
 		{
 			chosen_uv = new_sample;
 			best_sample_fitness.x = velocity_multiplier;

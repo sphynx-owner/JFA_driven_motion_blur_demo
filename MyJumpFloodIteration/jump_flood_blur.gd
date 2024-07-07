@@ -1,4 +1,3 @@
-@tool
 extends CompositorEffect
 class_name MotionBlurSphynxJumpFlood
 
@@ -27,6 +26,10 @@ class_name MotionBlurSphynxJumpFlood
 
 @export var perpen_error_threshold : float = 0.5
 @export var sample_step_multiplier : float = 4
+
+@export var backtracking_velocity_match_threshold : float = 0.2
+@export var backtracking_velocity_match_parallel_sensitivity : float = 1;
+@export var backtracking_velcoity_match_perpendicular_sensitivity : float = 0.2;
 
 var rd: RenderingDevice
 
@@ -162,7 +165,9 @@ func _render_callback(p_effect_callback_type, p_render_data):
 					get_image_uniform(buffer_b_image, 3),
 				])
 				
-				
+				compute_list = rd.compute_list_begin()
+				rd.compute_list_bind_compute_pipeline(compute_list, construct_pipeline)
+				rd.compute_list_bind_uniform_set(compute_list, tex_uniform_set, 0)
 				
 				for i in iteration_count:
 					var jf_push_constants : PackedInt32Array = [
@@ -176,18 +181,20 @@ func _render_callback(p_effect_callback_type, p_render_data):
 						perpen_error_threshold,
 						sample_step_multiplier,
 						motion_blur_intensity,
+						backtracking_velocity_match_threshold,
+						backtracking_velocity_match_parallel_sensitivity,
+						backtracking_velcoity_match_perpendicular_sensitivity,
 						0,
+						0
 					]
 					
 					var jf_byte_array = jf_push_constants.to_byte_array()
 					jf_byte_array.append_array(jf_float_push_constants_test.to_byte_array())
 					
-					compute_list = rd.compute_list_begin()
-					rd.compute_list_bind_compute_pipeline(compute_list, construct_pipeline)
-					rd.compute_list_bind_uniform_set(compute_list, tex_uniform_set, 0)
 					rd.compute_list_set_push_constant(compute_list, jf_byte_array, jf_byte_array.size())
 					rd.compute_list_dispatch(compute_list, x_groups, y_groups, 1)
-					rd.compute_list_end()
+				
+				rd.compute_list_end()
 				
 				rd.draw_command_end_label()
 				
