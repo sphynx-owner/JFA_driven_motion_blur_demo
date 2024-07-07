@@ -10,27 +10,13 @@ https://youtu.be/m_KvYlYF3sA
 A paper i wrote on the matter can be found here:
 [Using the Jump Flood Algorithm to Dilate Velocity Maps in the application of Believable High Range High Fidelity Motion Blur 7_7_24 (2) - Google Docs.pdf](https://github.com/user-attachments/files/16118920/Using.the.Jump.Flood.Algorithm.to.Dilate.Velocity.Maps.in.the.application.of.Believable.High.Range.High.Fidelity.Motion.Blur.7_7_24.2.-.Google.Docs.pdf)
 
-
-# Bistro-Demo-Tweaked
-Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
-
-https://github.com/Jamsers/Bistro-Demo-Tweaked/assets/39361911/67493ad0-d19c-40ab-ad07-4014dbd654a5
-
-Includes [Godot-Human-For-Scale](https://github.com/Jamsers/Godot-Human-For-Scale) to run around the level, and an interface for changing the time of day, resolution scaling, and quality scaling. Appropriate objects in the level are set to dynamic and are physics enabled, to see the effects of lighting on dynamic objects as well.
-
-## Usage
+## Usage as addon
 1. Clone or download the Github repository.
-2. Download [Godot 4.x](https://godotengine.org/download/) and open the repository folder with Godot.
-3. Run the project. (Play button on the upper right corner of Godot's interface)
+2. Copy the `/addons/JFA_driven_motion_blur` folder from the repository into your project.
+3. Add a Compositor to your WorldEnvironment.
+4. Add a New MotionBlurSphynxJumpFlood to your Compositor Effects.
 
-## Releases
-Windows: [Bistro-Demo-Tweaked-Windows.zip](https://github.com/Jamsers/Bistro-Demo-Tweaked/releases/download/v1.1/Bistro-Demo-Tweaked-Windows.zip)  
-Mac: [Bistro-Demo-Tweaked-Mac.zip](https://github.com/Jamsers/Bistro-Demo-Tweaked/releases/download/v1.1/Bistro-Demo-Tweaked-Mac.zip)  
-Linux: [Bistro-Demo-Tweaked-Linux.zip](https://github.com/Jamsers/Bistro-Demo-Tweaked/releases/download/v1.1/Bistro-Demo-Tweaked-Linux.zip)
-
-To get past the "Apple cannot check it for malicious software" warning on Mac, follow the instructions [here](https://support.apple.com/guide/mac-help/mchleab3a043).
-
-## Controls
+## Demo Controls
 - **ESCAPE** to capture/uncapture mouse  
   **H** to hide/unhide control panel UI
 
@@ -44,17 +30,3 @@ To get past the "Apple cannot check it for malicious software" warning on Mac, f
 
 ## *.res Files Reimported
 When opening the project for the first time, you may notice hundreds of *.res files get modified in your source control. This is a quirk of the Godot importer and these changes can be safely discarded once project has already been opened once.
-
-## Extra Options
-Use the Light Change Utility node to change lighting scenarios in editor.  
-Includes a profiler to see performance details. [RAM counter not available in release builds](https://docs.godotengine.org/en/stable/classes/class_performance.html#enumerations).  
-You can turn music on or off in editor.
-
-![lightchangeutility](https://github.com/Jamsers/Bistro-Demo-Tweaked/assets/39361911/09c0a406-e942-467e-8ecc-fb2eafc55f4e)
-
-![ui](https://github.com/Jamsers/Bistro-Demo-Tweaked/assets/39361911/6d39b553-558b-4a63-8551-5e76681a9e90)
-
-## Credits
-Ported from [Amazon Lumberyard Bistro](https://developer.nvidia.com/orca/amazon-lumberyard-bistro).  
-Original porting work done by [Logan Preshaw](https://github.com/WickedInsignia), original port can be found [here](https://github.com/godotengine/godot/issues/74965).  
-Uses Creative Commons sounds, attributions are [here](https://github.com/Jamsers/Bistro-Demo-Tweaked/blob/main/Audio/ATTRIBUTION).
