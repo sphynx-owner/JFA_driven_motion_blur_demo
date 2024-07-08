@@ -33,11 +33,11 @@
 [ext_resource type="PackedScene" uid="uid://b62ieebpxbuin" path="res://Scenes/Section03/S3B1.tscn" id="16_m1vvn"]
 [ext_resource type="PackedScene" uid="uid://q5n4wbhxihjp" path="res://Scenes/Section03/S3B2.tscn" id="17_4e0xd"]
 [ext_resource type="PackedScene" uid="uid://ncj04jk76gn0" path="res://Scenes/Section02/Bistro_StringLights.tscn" id="17_j1o0m"]
-[ext_resource type="RDShaderFile" uid="uid://b02ng0mepo13k" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
+[ext_resource type="RDShaderFile" uid="uid://cdb8ur8nilc2v" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
 [ext_resource type="PackedScene" uid="uid://chlhxyb30n5bj" path="res://Scenes/Section03/S3B3.tscn" id="18_4ij38"]
 [ext_resource type="AudioStream" uid="uid://b6rc81y5wriln" path="res://Audio/day_bg.ogg" id="18_kwmnc"]
-[ext_resource type="RDShaderFile" uid="uid://ei3ro3axdl8y" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
-[ext_resource type="RDShaderFile" uid="uid://bc2dlayo43x06" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
+[ext_resource type="RDShaderFile" uid="uid://4q34gu55e05b" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
+[ext_resource type="RDShaderFile" uid="uid://dh60de130esmd" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
 [ext_resource type="PackedScene" uid="uid://cou4bgmlcrc2" path="res://Scenes/Section03/S3B4.tscn" id="19_acyb5"]
 [ext_resource type="AudioStream" uid="uid://cngxal8rdb5mj" path="res://Audio/night_bg.ogg" id="19_ida67"]
 [ext_resource type="Script" path="res://MyJumpFloodIteration/jump_flood_blur.gd" id="20_0qnwf"]
@@ -97,9 +97,10 @@ overlay_shader_file = ExtResource("19_7g3lb")
 construction_pass = ExtResource("18_opepq")
 perpen_error_threshold = 0.3
 sample_step_multiplier = 8.0
-backtracking_velocity_match_threshold = 0.49
-backtracking_velocity_match_parallel_sensitivity = 0.5
-backtracking_velcoity_match_perpendicular_sensitivity = 0.1
+backtracking_velocity_match_threshold = 0.9
+backtracking_velocity_match_parallel_sensitivity = 1.0
+backtracking_velcoity_match_perpendicular_sensitivity = 0.05
+backtracbing_depth_match_threshold = 0.001
 JFA_pass_count = 3
 framerate_independent = true
 uncapped_independence = false
