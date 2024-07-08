@@ -159,7 +159,7 @@ void main()
 		return;
 	}
 
-	vec2 uvn = vec2(uvi) / render_size;
+	vec2 uvn = vec2(uvi + vec2(0.5)) / render_size;
 
 	int iteration_count = int(params.motion_blur_samples);
 
