@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7j2fy3322mgg"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqtyccjeaflcs" path="res://Meshes/RadialBlurDemo/toy windmills stick.obj" id="1_vubbk"]
+[ext_resource type="PackedScene" uid="uid://b0shum42bqq0y" path="res://RadialBlurTest/radial_blur_mesh.tscn" id="2_pht8u"]
+[ext_resource type="ArrayMesh" uid="uid://biuitwx7638ld" path="res://Meshes/RadialBlurDemo/toy windmills mesh.obj" id="2_si5rt"]
+[ext_resource type="ArrayMesh" uid="uid://ckdoj414yaluf" path="res://Meshes/RadialBlurDemo/toy windmills encapsulating mesh.obj" id="3_ll3id"]
+[ext_resource type="Script" path="res://Meshes/RadialBlurDemo/windmill_rotating_node.gd" id="4_a7h52"]
+[ext_resource type="Shader" path="res://RadialBlurTest/radial_blur_mesh.gdshader" id="4_baxi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0qrx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw122"]
+albedo_color = Color(0.605274, 0.605274, 0.605274, 1)
+metallic = 0.54
+roughness = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ftkc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_baxi4")
+shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
+shader_parameter/rotation_speed = 0.3
+shader_parameter/sample_count = 8
+shader_parameter/shape_depth = 1.395
+shader_parameter/shape_radius = 2.41
+shader_parameter/shape_axis_offset = 0.0
+shader_parameter/debug_toggle = 0.0
+shader_parameter/debug_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwltb"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+roughness = 0.51
+
+[node name="ToyWindmillScene" type="Node3D"]
+
+[node name="windmill_stick" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_vubbk")
+surface_material_override/0 = SubResource("StandardMaterial3D_q0qrx")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw122")
+
+[node name="RadialBlurMesh" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("2_pht8u")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00720077, 0.792751, 0.0981393)
+mesh = ExtResource("3_ll3id")
+surface_material_override/0 = SubResource("ShaderMaterial_2ftkc")
+target_node = NodePath("../windmill_rotating_node")
+local_rotation_axis = 2
+target_local_rotation_axis = 2
+
+[node name="windmill_rotating_node" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00720077, 0.792751, 0.0981393)
+script = ExtResource("4_a7h52")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="windmill_rotating_node"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("2_si5rt")
+surface_material_override/0 = SubResource("StandardMaterial3D_jwltb")

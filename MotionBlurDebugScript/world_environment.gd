@@ -13,7 +13,7 @@ var all_fps : Array[int] = [
 var fps_index : int = 0
 
 func _ready():
-	var motion_blur_effect = compositor.compositor_effects[0]
+	var motion_blur_effect = compositor.compositor_effects[1]
 	
 	iteration_count = motion_blur_effect.JFA_pass_count
 	$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 	if compositor.compositor_effects.size() == 0:
 		return
 	
-	var motion_blur_effect = compositor.compositor_effects[0]
+	var motion_blur_effect = compositor.compositor_effects[1]
 	
 	if Input.is_action_just_pressed("left"):
 		iteration_count -= 1
@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 		$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
 	
 	if Input.is_action_just_pressed("SPACE"):
-		motion_blur_effect.draw_debug = 1 if motion_blur_effect.draw_debug == 0 else 0
+		motion_blur_effect.draw_debug = !motion_blur_effect.draw_debug
 
 	
 	if Input.is_action_just_pressed("up"):

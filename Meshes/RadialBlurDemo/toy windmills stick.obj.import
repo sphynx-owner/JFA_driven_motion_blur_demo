@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqtyccjeaflcs"
+path="res://.godot/imported/toy windmills stick.obj-e702e944b19b79ea5a59031447bb12ac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/toy windmills stick.obj-e702e944b19b79ea5a59031447bb12ac.mesh"]
+
+source_file="res://Meshes/RadialBlurDemo/toy windmills stick.obj"
+dest_files=["res://.godot/imported/toy windmills stick.obj-e702e944b19b79ea5a59031447bb12ac.mesh", "res://.godot/imported/toy windmills stick.obj-e702e944b19b79ea5a59031447bb12ac.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

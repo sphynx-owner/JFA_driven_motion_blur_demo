@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=3 uid="uid://dcgtpj2gjbxgl"]
+[gd_scene load_steps=296 format=3 uid="uid://dcgtpj2gjbxgl"]
 
 [ext_resource type="PackedScene" uid="uid://x65cq1udsqsf" path="res://Scenes/Section01/S1B1.tscn" id="1_17a2u"]
 [ext_resource type="PackedScene" uid="uid://eo1atg6pdllw" path="res://Scenes/Section01/S1B2.tscn" id="2_8mtnr"]
@@ -33,11 +33,14 @@
 [ext_resource type="PackedScene" uid="uid://b62ieebpxbuin" path="res://Scenes/Section03/S3B1.tscn" id="16_m1vvn"]
 [ext_resource type="PackedScene" uid="uid://q5n4wbhxihjp" path="res://Scenes/Section03/S3B2.tscn" id="17_4e0xd"]
 [ext_resource type="PackedScene" uid="uid://ncj04jk76gn0" path="res://Scenes/Section02/Bistro_StringLights.tscn" id="17_j1o0m"]
-[ext_resource type="RDShaderFile" uid="uid://47xy0hhhbi8u" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
+[ext_resource type="RDShaderFile" uid="uid://c3hemlr50tv6p" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
+[ext_resource type="RDShaderFile" uid="uid://tx5dpg4cese4" path="res://PreBlurProcessing/pre_blur_processor.glsl" id="17_qicuk"]
+[ext_resource type="Script" path="res://PreBlurProcessing/blur_velocity_component_resource.gd" id="17_x2qge"]
+[ext_resource type="Script" path="res://PreBlurProcessing/pre_blur_processor.gd" id="18_1pisn"]
 [ext_resource type="PackedScene" uid="uid://chlhxyb30n5bj" path="res://Scenes/Section03/S3B3.tscn" id="18_4ij38"]
 [ext_resource type="AudioStream" uid="uid://b6rc81y5wriln" path="res://Audio/day_bg.ogg" id="18_kwmnc"]
-[ext_resource type="RDShaderFile" uid="uid://ct1xhpqekxysb" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
-[ext_resource type="RDShaderFile" uid="uid://cfcxdual27w50" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
+[ext_resource type="RDShaderFile" uid="uid://yfjbb3iso4jt" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
+[ext_resource type="RDShaderFile" uid="uid://d03sqqhg3n1ys" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
 [ext_resource type="PackedScene" uid="uid://cou4bgmlcrc2" path="res://Scenes/Section03/S3B4.tscn" id="19_acyb5"]
 [ext_resource type="AudioStream" uid="uid://cngxal8rdb5mj" path="res://Audio/night_bg.ogg" id="19_ida67"]
 [ext_resource type="Script" path="res://MyJumpFloodIteration/jump_flood_blur.gd" id="20_0qnwf"]
@@ -80,6 +83,25 @@
 [ext_resource type="PackedScene" uid="uid://cb5wljw5j3qlt" path="res://Scenes/PropAudioPlayer.tscn" id="70_yq80p"]
 [ext_resource type="Script" path="res://Scripts/FoliageArea.gd" id="75_mt554"]
 [ext_resource type="PackedScene" uid="uid://dph2jwqw0jaw" path="res://Scenes/FoliageSound.tscn" id="76_oe8ap"]
+[ext_resource type="PackedScene" uid="uid://b7j2fy3322mgg" path="res://Meshes/RadialBlurDemo/toy_windmill_scene.tscn" id="84_0ivht"]
+[ext_resource type="Shader" path="res://RadialBlurTest/radial_blur_mesh.gdshader" id="85_382r6"]
+
+[sub_resource type="Resource" id="Resource_4gxi4"]
+script = ExtResource("17_x2qge")
+multiplier = 0.0
+lower_threshold = 0.0
+upper_threshold = 0.0
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_kpvo4"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("18_1pisn")
+pre_blur_processor_shader_file = ExtResource("17_qicuk")
+camera_rotation_component = SubResource("Resource_4gxi4")
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_d3aqs"]
 resource_local_to_scene = false
@@ -96,7 +118,8 @@ blur_shader_file = ExtResource("17_lj2u4")
 overlay_shader_file = ExtResource("19_7g3lb")
 construction_pass = ExtResource("18_opepq")
 perpen_error_threshold = 0.3
-sample_step_multiplier = 8.0
+sample_step_multiplier = 4.0
+step_exponent_modifier = 1.0
 backtracking_sample_count = 8
 backtracking_velocity_match_threshold = 0.9
 backtracking_velocity_match_parallel_sensitivity = 1.0
@@ -106,9 +129,11 @@ JFA_pass_count = 3
 framerate_independent = true
 uncapped_independence = false
 target_constant_framerate = 30.0
+draw_debug = false
+debug_page = 0
 
 [sub_resource type="Compositor" id="Compositor_ak7ke"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_d3aqs")])
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_kpvo4"), SubResource("CompositorEffect_d3aqs")])
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4h6w"]
 size = Vector3(42.825, 3, 85.35)
@@ -714,6 +739,42 @@ points = PackedVector3Array(0.920485, 0.34365, 0.158231, -0.875471, -0.425443, 0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kdqdg"]
 points = PackedVector3Array(0.510391, -1.06574, 0.344101, -0.637138, 0.368819, 0.822288, 0.637969, 0.496405, 0.790528, 0.765547, -0.682983, -0.73971, -0.477708, 0.400803, -0.962824, -0.796569, -0.778585, 0.663092, 0.701842, -0.77876, 0.790528, 0.797399, 0.464596, -0.484437, -0.764716, 0.400803, -0.580115, -0.318277, -0.810569, -0.962824, -0.445855, 0.719594, 0.567215, 0.319108, -0.810569, 0.949924, 0.637969, 0.33701, -0.867147, -0.732864, -0.651173, -0.612074, 0.351129, -1.03376, -0.707751, 0.414834, 0.273217, 1.01384, 0.861104, 0.177614, 0.184705, -0.860274, 0.241407, 0.312142, -0.382151, 0.623992, -0.771469, 0.319108, 0.719769, 0.599174, -0.573433, -0.938156, -0.452678, -0.668991, -0.459794, 0.854247, 0.510391, 0.592008, -0.707751, 0.822974, -0.690956, -0.615596, -0.414003, 0.177614, -1.02674, 0.0959725, -0.746776, -0.930865, -0.732864, 0.496405, 0.663092, -0.573433, -0.651173, -0.898906, -0.190868, 0.68761, -0.420719, 0.0322677, 0.68761, 0.72681, 0.861104, -0.523587, -0.420719, -0.828421, 0.464421, 0.152746)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ftkc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("85_382r6")
+shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
+shader_parameter/rotation_speed = 0.3
+shader_parameter/sample_count = 8
+shader_parameter/shape_depth = 1.395
+shader_parameter/shape_radius = 2.41
+shader_parameter/shape_axis_offset = 0.0
+shader_parameter/debug_toggle = 0.0
+shader_parameter/debug_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jslsn"]
+albedo_color = Color(0, 0.733333, 0, 1)
+metallic = 1.0
+roughness = 0.51
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glnqf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("85_382r6")
+shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
+shader_parameter/rotation_speed = 0.3
+shader_parameter/sample_count = 8
+shader_parameter/shape_depth = 1.395
+shader_parameter/shape_radius = 2.41
+shader_parameter/shape_axis_offset = 0.0
+shader_parameter/debug_toggle = 0.0
+shader_parameter/debug_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11q7k"]
+albedo_color = Color(1, 1, 0, 1)
+metallic = 1.0
+roughness = 0.51
 
 [node name="MainScene" type="Node"]
 
@@ -3441,3 +3502,27 @@ transform = Transform3D(0.941434, 0, 0.337193, 0, 1, 0, -0.337193, 0, 0.941434, 
 enable_physics_gun = true
 enable_depth_of_field = true
 enable_audio = true
+
+[node name="ToyWindmillScene" parent="." instance=ExtResource("84_0ivht")]
+transform = Transform3D(0.898422, 0.204069, 0.388838, -0.187281, 0.978957, -0.0810554, -0.397196, 0, 0.917734, -1.25309, 1.14813, -6.30725)
+
+[node name="ToyWindmillScene3" parent="." instance=ExtResource("84_0ivht")]
+transform = Transform3D(0.582413, -0.206715, 0.434948, 0.251198, 0.712748, 0.00237891, -0.410865, 0.142741, 0.618006, -1.25776, 1.05962, -6.15322)
+
+[node name="RadialBlurMesh" parent="ToyWindmillScene3" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_2ftkc")
+
+[node name="MeshInstance3D" parent="ToyWindmillScene3/windmill_rotating_node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jslsn")
+
+[node name="ToyWindmillScene2" parent="." instance=ExtResource("84_0ivht")]
+transform = Transform3D(-0.426585, 0, 0.904448, 0, 1, 0, -0.904448, 0, -0.426585, -12.6241, 0.749257, 6.68089)
+
+[node name="RadialBlurMesh" parent="ToyWindmillScene2" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_glnqf")
+
+[node name="MeshInstance3D" parent="ToyWindmillScene2/windmill_rotating_node" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_11q7k")
+
+[editable path="ToyWindmillScene3"]
+[editable path="ToyWindmillScene2"]
