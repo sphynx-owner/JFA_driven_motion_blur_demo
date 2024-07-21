@@ -13,6 +13,17 @@ A paper I wrote on the matter can be found here:
 An addon version can be found here:
 [https://github.com/sphynx-owner/JFA_driven_motion_blur_addon/tree/master](https://github.com/sphynx-owner/JFA_driven_motion_blur_addon)
 
+# Instructions
+1. take the contenst of the "addons" folder and move them to an addons folder in your project. 
+2. add an environment node, add a compositor effect to it
+3. to that, add a new PreBlurProcessor effect, which is now required, and after it add a new MotionBlurSphynxJumpFlood
+
+instructions for radial blur meshes can be seen here:
+https://youtu.be/eslsw9do4Kc
+
+WARNING:
+if you want transparent objects to render on top of the blurred background, you can move the pre-blur-processing and blur post process effects both to callback type of pre-transparent, At which point it would not work if you have MSAA enabled, so make sure to also turn that off.
+
 # Bistro-Demo-Tweaked
 Bistro demo for [Godot](https://github.com/godotengine/godot) showcasing lighting and high quality assets.
 
