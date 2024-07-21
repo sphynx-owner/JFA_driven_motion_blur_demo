@@ -1,4 +1,4 @@
-[gd_scene load_steps=296 format=3 uid="uid://dcgtpj2gjbxgl"]
+[gd_scene load_steps=295 format=3 uid="uid://dcgtpj2gjbxgl"]
 
 [ext_resource type="PackedScene" uid="uid://x65cq1udsqsf" path="res://Scenes/Section01/S1B1.tscn" id="1_17a2u"]
 [ext_resource type="PackedScene" uid="uid://eo1atg6pdllw" path="res://Scenes/Section01/S1B2.tscn" id="2_8mtnr"]
@@ -31,16 +31,16 @@
 [ext_resource type="PackedScene" uid="uid://bij2ka0wuj53c" path="res://Scenes/Section02/S2Details.tscn" id="15_uu4ux"]
 [ext_resource type="PackedScene" uid="uid://c7x2605gbo88t" path="res://Scenes/Section02/Bistro_Lanterns.tscn" id="16_1sf6e"]
 [ext_resource type="PackedScene" uid="uid://b62ieebpxbuin" path="res://Scenes/Section03/S3B1.tscn" id="16_m1vvn"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://PreBlurProcessing/default_component.tres" id="17_0inj8"]
 [ext_resource type="PackedScene" uid="uid://q5n4wbhxihjp" path="res://Scenes/Section03/S3B2.tscn" id="17_4e0xd"]
 [ext_resource type="PackedScene" uid="uid://ncj04jk76gn0" path="res://Scenes/Section02/Bistro_StringLights.tscn" id="17_j1o0m"]
-[ext_resource type="RDShaderFile" uid="uid://c3hemlr50tv6p" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
-[ext_resource type="RDShaderFile" uid="uid://tx5dpg4cese4" path="res://PreBlurProcessing/pre_blur_processor.glsl" id="17_qicuk"]
-[ext_resource type="Script" path="res://PreBlurProcessing/blur_velocity_component_resource.gd" id="17_x2qge"]
+[ext_resource type="RDShaderFile" uid="uid://wfmvke70qcpa" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
+[ext_resource type="RDShaderFile" uid="uid://ccg27o4i1gfty" path="res://PreBlurProcessing/pre_blur_processor.glsl" id="17_qicuk"]
 [ext_resource type="Script" path="res://PreBlurProcessing/pre_blur_processor.gd" id="18_1pisn"]
 [ext_resource type="PackedScene" uid="uid://chlhxyb30n5bj" path="res://Scenes/Section03/S3B3.tscn" id="18_4ij38"]
 [ext_resource type="AudioStream" uid="uid://b6rc81y5wriln" path="res://Audio/day_bg.ogg" id="18_kwmnc"]
-[ext_resource type="RDShaderFile" uid="uid://yfjbb3iso4jt" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
-[ext_resource type="RDShaderFile" uid="uid://d03sqqhg3n1ys" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
+[ext_resource type="RDShaderFile" uid="uid://3v1b0hrdm7nw" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
+[ext_resource type="RDShaderFile" uid="uid://bbnb4hw0aoqy1" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
 [ext_resource type="PackedScene" uid="uid://cou4bgmlcrc2" path="res://Scenes/Section03/S3B4.tscn" id="19_acyb5"]
 [ext_resource type="AudioStream" uid="uid://cngxal8rdb5mj" path="res://Audio/night_bg.ogg" id="19_ida67"]
 [ext_resource type="Script" path="res://MyJumpFloodIteration/jump_flood_blur.gd" id="20_0qnwf"]
@@ -86,12 +86,6 @@
 [ext_resource type="PackedScene" uid="uid://b7j2fy3322mgg" path="res://Meshes/RadialBlurDemo/toy_windmill_scene.tscn" id="84_0ivht"]
 [ext_resource type="Shader" path="res://RadialBlurTest/radial_blur_mesh.gdshader" id="85_382r6"]
 
-[sub_resource type="Resource" id="Resource_4gxi4"]
-script = ExtResource("17_x2qge")
-multiplier = 0.0
-lower_threshold = 0.0
-upper_threshold = 0.0
-
 [sub_resource type="CompositorEffect" id="CompositorEffect_kpvo4"]
 resource_local_to_scene = false
 resource_name = ""
@@ -101,7 +95,9 @@ needs_motion_vectors = false
 needs_normal_roughness = false
 script = ExtResource("18_1pisn")
 pre_blur_processor_shader_file = ExtResource("17_qicuk")
-camera_rotation_component = SubResource("Resource_4gxi4")
+camera_rotation_component = ExtResource("17_0inj8")
+camera_movement_component = ExtResource("17_0inj8")
+object_movement_component = ExtResource("17_0inj8")
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_d3aqs"]
 resource_local_to_scene = false
