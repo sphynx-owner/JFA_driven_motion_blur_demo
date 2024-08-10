@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7j2fy3322mgg"]
 
 [ext_resource type="ArrayMesh" uid="uid://bqtyccjeaflcs" path="res://Meshes/RadialBlurDemo/toy windmills stick.obj" id="1_vubbk"]
-[ext_resource type="PackedScene" uid="uid://b0shum42bqq0y" path="res://RadialBlurTest/radial_blur_mesh.tscn" id="2_pht8u"]
+[ext_resource type="PackedScene" uid="uid://8p6li7o742g3" path="res://addons/SphynxMotionBlurToolkit/RadialBlurToolkit/radial_blur_mesh.tscn" id="2_pht8u"]
 [ext_resource type="ArrayMesh" uid="uid://biuitwx7638ld" path="res://Meshes/RadialBlurDemo/toy windmills mesh.obj" id="2_si5rt"]
 [ext_resource type="ArrayMesh" uid="uid://ckdoj414yaluf" path="res://Meshes/RadialBlurDemo/toy windmills encapsulating mesh.obj" id="3_ll3id"]
 [ext_resource type="Script" path="res://Meshes/RadialBlurDemo/windmill_rotating_node.gd" id="4_a7h52"]
-[ext_resource type="Shader" path="res://RadialBlurTest/radial_blur_mesh.gdshader" id="4_baxi4"]
+[ext_resource type="Shader" path="res://addons/SphynxMotionBlurToolkit/RadialBlurToolkit/radial_blur_mesh.gdshader" id="4_baxi4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0qrx"]
 
@@ -44,7 +44,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_nw122")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00720077, 0.792751, 0.0981393)
 mesh = ExtResource("3_ll3id")
 surface_material_override/0 = SubResource("ShaderMaterial_2ftkc")
-target_node = NodePath("../windmill_rotating_node")
+target_node = NodePath("../windmill_rotating_node/MeshInstance3D")
 local_rotation_axis = 2
 target_local_rotation_axis = 2
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=295 format=3 uid="uid://dcgtpj2gjbxgl"]
+[gd_scene load_steps=301 format=3 uid="uid://dcgtpj2gjbxgl"]
 
 [ext_resource type="PackedScene" uid="uid://x65cq1udsqsf" path="res://Scenes/Section01/S1B1.tscn" id="1_17a2u"]
 [ext_resource type="PackedScene" uid="uid://eo1atg6pdllw" path="res://Scenes/Section01/S1B2.tscn" id="2_8mtnr"]
@@ -31,31 +31,36 @@
 [ext_resource type="PackedScene" uid="uid://bij2ka0wuj53c" path="res://Scenes/Section02/S2Details.tscn" id="15_uu4ux"]
 [ext_resource type="PackedScene" uid="uid://c7x2605gbo88t" path="res://Scenes/Section02/Bistro_Lanterns.tscn" id="16_1sf6e"]
 [ext_resource type="PackedScene" uid="uid://b62ieebpxbuin" path="res://Scenes/Section03/S3B1.tscn" id="16_m1vvn"]
-[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://PreBlurProcessing/default_component.tres" id="17_0inj8"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_component.tres" id="17_0inj8"]
 [ext_resource type="PackedScene" uid="uid://q5n4wbhxihjp" path="res://Scenes/Section03/S3B2.tscn" id="17_4e0xd"]
 [ext_resource type="PackedScene" uid="uid://ncj04jk76gn0" path="res://Scenes/Section02/Bistro_StringLights.tscn" id="17_j1o0m"]
-[ext_resource type="RDShaderFile" uid="uid://wfmvke70qcpa" path="res://MyJumpFloodIteration/jump_flood_blur.glsl" id="17_lj2u4"]
-[ext_resource type="RDShaderFile" uid="uid://ccg27o4i1gfty" path="res://PreBlurProcessing/pre_blur_processor.glsl" id="17_qicuk"]
-[ext_resource type="Script" path="res://PreBlurProcessing/pre_blur_processor.gd" id="18_1pisn"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="18_1wdr3"]
 [ext_resource type="PackedScene" uid="uid://chlhxyb30n5bj" path="res://Scenes/Section03/S3B3.tscn" id="18_4ij38"]
 [ext_resource type="AudioStream" uid="uid://b6rc81y5wriln" path="res://Audio/day_bg.ogg" id="18_kwmnc"]
-[ext_resource type="RDShaderFile" uid="uid://3v1b0hrdm7nw" path="res://MyJumpFloodIteration/jfp_backtracking_experimental.glsl" id="18_opepq"]
-[ext_resource type="RDShaderFile" uid="uid://bbnb4hw0aoqy1" path="res://MyJumpFloodIteration/jump_flood_overlay.glsl" id="19_7g3lb"]
 [ext_resource type="PackedScene" uid="uid://cou4bgmlcrc2" path="res://Scenes/Section03/S3B4.tscn" id="19_acyb5"]
 [ext_resource type="AudioStream" uid="uid://cngxal8rdb5mj" path="res://Audio/night_bg.ogg" id="19_ida67"]
-[ext_resource type="Script" path="res://MyJumpFloodIteration/jump_flood_blur.gd" id="20_0qnwf"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="19_u7cfn"]
+[ext_resource type="Resource" uid="uid://bk5yd5plopwi2" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/simple_jf_blur_stage.tres" id="20_g5lhw"]
 [ext_resource type="AudioStream" uid="uid://ck4j2cl1itpcg" path="res://Audio/daymusic.ogg" id="20_mwu7t"]
 [ext_resource type="PackedScene" uid="uid://8lyr6devevqc" path="res://Scenes/Section03/S3Lamps.tscn" id="20_w5tey"]
 [ext_resource type="PackedScene" uid="uid://0rjacw3hrc2a" path="res://Scenes/Section04/S4B1.tscn" id="21_7egcs"]
 [ext_resource type="Script" path="res://MotionBlurDebugScript/world_environment.gd" id="21_i2u6d"]
+[ext_resource type="Resource" uid="uid://bj3exhmsfcx4w" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jf_simple_stage.tres" id="21_lt7xq"]
 [ext_resource type="AudioStream" uid="uid://uie3maxhbtg1" path="res://Audio/nightmusic.ogg" id="21_nqn7s"]
 [ext_resource type="PackedScene" uid="uid://d0oo6ukycpqtf" path="res://Scenes/Section01/S1Lamps_Props.tscn" id="21_yopo6"]
 [ext_resource type="PackedScene" uid="uid://dg2ssh4rfvemk" path="res://Scenes/Section04/S4B2.tscn" id="22_k7idl"]
+[ext_resource type="Resource" uid="uid://co5k7plgmxepi" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_neighbor_max_stage.tres" id="22_utghc"]
 [ext_resource type="PackedScene" uid="uid://dhbajvc40q32m" path="res://Scenes/Section04/S4B3.tscn" id="23_256hy"]
 [ext_resource type="PackedScene" uid="uid://7pvp17b3ediw" path="res://Scenes/Section02/BistroProps_Props.tscn" id="23_lunsi"]
+[ext_resource type="Resource" uid="uid://dc5fr84ue3dn5" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_overlay_stage.tres" id="23_rhhtk"]
 [ext_resource type="PackedScene" uid="uid://c12tht4kio8pw" path="res://Scenes/Section05/S5B1.tscn" id="24_0u2lm"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/simple_jf_motion_blur.gd" id="24_ti5pw"]
+[ext_resource type="Resource" uid="uid://c10aboaly701b" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_tile_max_x_stage.tres" id="25_cki3b"]
 [ext_resource type="PackedScene" uid="uid://del44lwpj48x1" path="res://Scenes/Section05/S5B2.tscn" id="25_tcv6v"]
+[ext_resource type="Resource" uid="uid://cymk87e4nyxva" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_tile_max_y_stage.tres" id="26_bnivd"]
 [ext_resource type="PackedScene" uid="uid://ckb5gvf1swqgf" path="res://Scenes/Section05/S5Lamps.tscn" id="26_xvk4t"]
+[ext_resource type="Resource" uid="uid://o2bivm33b0v4" path="res://addons/SphynxMotionBlurToolkit/Debug/debug_overlay_shader_stage.tres" id="27_64c2v"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Debug/post_process_debug.gd" id="28_0kqy1"]
 [ext_resource type="CameraAttributesPractical" uid="uid://c5r7ambhbw168" path="res://Resources/BistroCameraAttributesPractical.tres" id="30_pvdv2"]
 [ext_resource type="PackedScene" uid="uid://b5i411e430syd" path="res://Godot-Human-For-Scale/Human-For-Scale.tscn" id="31_gaxn2"]
 [ext_resource type="PackedScene" uid="uid://ckt8i0dx43ex0" path="res://Scenes/UI.tscn" id="32_q35xk"]
@@ -84,52 +89,68 @@
 [ext_resource type="Script" path="res://Scripts/FoliageArea.gd" id="75_mt554"]
 [ext_resource type="PackedScene" uid="uid://dph2jwqw0jaw" path="res://Scenes/FoliageSound.tscn" id="76_oe8ap"]
 [ext_resource type="PackedScene" uid="uid://b7j2fy3322mgg" path="res://Meshes/RadialBlurDemo/toy_windmill_scene.tscn" id="84_0ivht"]
-[ext_resource type="Shader" path="res://RadialBlurTest/radial_blur_mesh.gdshader" id="85_382r6"]
+[ext_resource type="Shader" path="res://addons/SphynxMotionBlurToolkit/RadialBlurToolkit/radial_blur_mesh.gdshader" id="90_ff3xo"]
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_kpvo4"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_f2hk4"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
-script = ExtResource("18_1pisn")
-pre_blur_processor_shader_file = ExtResource("17_qicuk")
+script = ExtResource("19_u7cfn")
+pre_blur_processor_stage = ExtResource("18_1wdr3")
 camera_rotation_component = ExtResource("17_0inj8")
 camera_movement_component = ExtResource("17_0inj8")
 object_movement_component = ExtResource("17_0inj8")
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_d3aqs"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_mymrf"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
-script = ExtResource("20_0qnwf")
-motion_blur_samples = 8
+script = ExtResource("24_ti5pw")
+motion_blur_samples = 16
 motion_blur_intensity = 1.0
 motion_blur_center_fade = 0.0
-blur_shader_file = ExtResource("17_lj2u4")
-overlay_shader_file = ExtResource("19_7g3lb")
-construction_pass = ExtResource("18_opepq")
-perpen_error_threshold = 0.3
-sample_step_multiplier = 4.0
+tile_max_x_stage = ExtResource("25_cki3b")
+tile_max_y_stage = ExtResource("26_bnivd")
+construct_stage = ExtResource("21_lt7xq")
+neighbor_max_stage = ExtResource("22_utghc")
+blur_stage = ExtResource("20_g5lhw")
+overlay_stage = ExtResource("23_rhhtk")
+perpen_error_threshold = 0.5
+sample_step_multiplier = 16
 step_exponent_modifier = 1.0
-backtracking_sample_count = 8
-backtracking_velocity_match_threshold = 0.9
-backtracking_velocity_match_parallel_sensitivity = 1.0
-backtracking_velcoity_match_perpendicular_sensitivity = 0.05
-backtracbing_depth_match_threshold = 0.001
 JFA_pass_count = 3
 framerate_independent = true
 uncapped_independence = false
 target_constant_framerate = 30.0
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_cphjg"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("28_0kqy1")
+overlay_stage = ExtResource("27_64c2v")
 draw_debug = false
 debug_page = 0
+debug_1 = "debug_1"
+debug_2 = "debug_2"
+debug_3 = "debug_3"
+debug_4 = "debug_4"
+debug_5 = "debug_5"
+debug_6 = "debug_6"
+debug_7 = "debug_7"
+debug_8 = "debug_8"
 
 [sub_resource type="Compositor" id="Compositor_ak7ke"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_kpvo4"), SubResource("CompositorEffect_d3aqs")])
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_f2hk4"), SubResource("CompositorEffect_mymrf"), SubResource("CompositorEffect_cphjg")])
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4h6w"]
 size = Vector3(42.825, 3, 85.35)
@@ -739,7 +760,20 @@ points = PackedVector3Array(0.510391, -1.06574, 0.344101, -0.637138, 0.368819, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ftkc"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("85_382r6")
+shader = ExtResource("90_ff3xo")
+shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
+shader_parameter/rotation_speed = 0.3
+shader_parameter/sample_count = 8
+shader_parameter/shape_depth = 1.395
+shader_parameter/shape_radius = 2.41
+shader_parameter/shape_axis_offset = 0.0
+shader_parameter/debug_toggle = 0.0
+shader_parameter/debug_color = Color(1, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66u1h"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("90_ff3xo")
 shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
 shader_parameter/rotation_speed = 0.3
 shader_parameter/sample_count = 8
@@ -754,19 +788,6 @@ albedo_color = Color(0, 0.733333, 0, 1)
 metallic = 1.0
 roughness = 0.51
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glnqf"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("85_382r6")
-shader_parameter/local_rotation_axis = Vector3(0, 0, 1)
-shader_parameter/rotation_speed = 0.3
-shader_parameter/sample_count = 8
-shader_parameter/shape_depth = 1.395
-shader_parameter/shape_radius = 2.41
-shader_parameter/shape_axis_offset = 0.0
-shader_parameter/debug_toggle = 0.0
-shader_parameter/debug_color = Color(1, 0, 0, 0)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11q7k"]
 albedo_color = Color(1, 1, 0, 1)
 metallic = 1.0
@@ -778,11 +799,9 @@ roughness = 0.51
 script = ExtResource("12_p7w1a")
 UI = NodePath("../UI")
 
-[node name="UI" parent="." node_paths=PackedStringArray("custom_res", "profiler", "sun_light", "environment", "night_lights", "lamp_meshes", "scalable_night_lights", "day_ambient_audio", "night_ambient_audio", "day_music", "night_music") instance=ExtResource("32_q35xk")]
+[node name="UI" parent="." node_paths=PackedStringArray("sun_light", "environment", "night_lights", "lamp_meshes", "scalable_night_lights", "day_ambient_audio", "night_ambient_audio", "day_music", "night_music") instance=ExtResource("32_q35xk")]
 enable_profiler = true
 enable_music = true
-custom_res = [NodePath("HBoxContainer/VBoxContainer/custom_resolution"), NodePath("HBoxContainer/VBoxContainer/custom_resolution_apply_label")]
-profiler = [NodePath("HBoxContainer/VBoxContainer2/profiler"), NodePath("HBoxContainer/VBoxContainer2/HSeparator")]
 sun_light = NodePath("../Sun")
 environment = NodePath("WorldEnvironment")
 night_lights = [NodePath("../Night Lights"), NodePath("../Props/Section02/Bistro_Lanterns/Lantern_Wind_21/Lantern_Wind_21_2/HangingLight01"), NodePath("../Props/Section02/Bistro_Lanterns/Lantern_Wind_22/Lantern_Wind_22_2/HangingLight02"), NodePath("../Props/Section02/Bistro_Lanterns/Lantern_Wind_23/Lantern_Wind_23_2/HangingLight03"), NodePath("../Props/Section02/Bistro_Lanterns/Lantern_Wind_24/Lantern_Wind_24_2/HangingLight03"), NodePath("../Props/Section02/Bistro_Lanterns/Lantern_Wind_25/Lantern_Wind_25_2/HangingLight04")]
@@ -3502,11 +3521,14 @@ enable_audio = true
 [node name="ToyWindmillScene" parent="." instance=ExtResource("84_0ivht")]
 transform = Transform3D(0.898422, 0.204069, 0.388838, -0.187281, 0.978957, -0.0810554, -0.397196, 0, 0.917734, -1.25309, 1.14813, -6.30725)
 
+[node name="RadialBlurMesh" parent="ToyWindmillScene" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_2ftkc")
+
 [node name="ToyWindmillScene3" parent="." instance=ExtResource("84_0ivht")]
 transform = Transform3D(0.582413, -0.206715, 0.434948, 0.251198, 0.712748, 0.00237891, -0.410865, 0.142741, 0.618006, -1.25776, 1.05962, -6.15322)
 
 [node name="RadialBlurMesh" parent="ToyWindmillScene3" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_2ftkc")
+surface_material_override/0 = SubResource("ShaderMaterial_66u1h")
 
 [node name="MeshInstance3D" parent="ToyWindmillScene3/windmill_rotating_node" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_jslsn")
@@ -3514,11 +3536,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jslsn")
 [node name="ToyWindmillScene2" parent="." instance=ExtResource("84_0ivht")]
 transform = Transform3D(-0.426585, 0, 0.904448, 0, 1, 0, -0.904448, 0, -0.426585, -12.6241, 0.749257, 6.68089)
 
-[node name="RadialBlurMesh" parent="ToyWindmillScene2" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_glnqf")
-
 [node name="MeshInstance3D" parent="ToyWindmillScene2/windmill_rotating_node" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_11q7k")
 
+[editable path="ToyWindmillScene"]
 [editable path="ToyWindmillScene3"]
 [editable path="ToyWindmillScene2"]

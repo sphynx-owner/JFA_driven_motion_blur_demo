@@ -43,9 +43,6 @@ func _input(event: InputEvent) -> void:
 		motion_blur_effect.JFA_pass_count = iteration_count
 		$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
 	
-	if Input.is_action_just_pressed("SPACE"):
-		motion_blur_effect.draw_debug = !motion_blur_effect.draw_debug
-
 	
 	if Input.is_action_just_pressed("up"):
 		fps_index += 1
@@ -58,9 +55,6 @@ func _input(event: InputEvent) -> void:
 		fps_index = clamp(fps_index, 0, all_fps.size() - 1) 
 		Engine.max_fps = all_fps[fps_index]
 		$"../Control/VBoxContainer/HBoxContainer3/target fps".text = str(all_fps[fps_index])
-	
-	if Input.is_action_just_pressed("freeze"):
-		motion_blur_effect.freeze = !motion_blur_effect.freeze
 	
 	if Input.is_action_just_pressed("T"):
 		motion_blur_effect.enabled = !motion_blur_effect.enabled
