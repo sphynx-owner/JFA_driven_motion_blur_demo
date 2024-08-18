@@ -15,7 +15,7 @@ var fps_index : int = 0
 func _ready():
 	var motion_blur_effect = compositor.compositor_effects[1]
 	
-	iteration_count = motion_blur_effect.JFA_pass_count
+	#iteration_count = motion_blur_effect.JFA_pass_count
 	$"../Control/VBoxContainer/HBoxContainer/iteration_count".text = str(iteration_count)
 
 func _input(event: InputEvent) -> void:

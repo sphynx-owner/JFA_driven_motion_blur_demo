@@ -42,27 +42,27 @@
 [ext_resource type="PackedScene" uid="uid://cou4bgmlcrc2" path="res://Scenes/Section03/S3B4.tscn" id="19_acyb5"]
 [ext_resource type="AudioStream" uid="uid://cngxal8rdb5mj" path="res://Audio/night_bg.ogg" id="19_ida67"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="19_u7cfn"]
-[ext_resource type="Resource" uid="uid://bk5yd5plopwi2" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/simple_jf_blur_stage.tres" id="20_g5lhw"]
 [ext_resource type="AudioStream" uid="uid://ck4j2cl1itpcg" path="res://Audio/daymusic.ogg" id="20_mwu7t"]
 [ext_resource type="PackedScene" uid="uid://8lyr6devevqc" path="res://Scenes/Section03/S3Lamps.tscn" id="20_w5tey"]
 [ext_resource type="PackedScene" uid="uid://0rjacw3hrc2a" path="res://Scenes/Section04/S4B1.tscn" id="21_7egcs"]
 [ext_resource type="Script" path="res://MotionBlurDebugScript/world_environment.gd" id="21_i2u6d"]
-[ext_resource type="Resource" uid="uid://bj3exhmsfcx4w" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jf_simple_stage.tres" id="21_lt7xq"]
 [ext_resource type="AudioStream" uid="uid://uie3maxhbtg1" path="res://Audio/nightmusic.ogg" id="21_nqn7s"]
 [ext_resource type="PackedScene" uid="uid://d0oo6ukycpqtf" path="res://Scenes/Section01/S1Lamps_Props.tscn" id="21_yopo6"]
+[ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="22_b3byo"]
 [ext_resource type="PackedScene" uid="uid://dg2ssh4rfvemk" path="res://Scenes/Section04/S4B2.tscn" id="22_k7idl"]
-[ext_resource type="Resource" uid="uid://co5k7plgmxepi" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_neighbor_max_stage.tres" id="22_utghc"]
 [ext_resource type="PackedScene" uid="uid://dhbajvc40q32m" path="res://Scenes/Section04/S4B3.tscn" id="23_256hy"]
 [ext_resource type="PackedScene" uid="uid://7pvp17b3ediw" path="res://Scenes/Section02/BistroProps_Props.tscn" id="23_lunsi"]
-[ext_resource type="Resource" uid="uid://dc5fr84ue3dn5" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_overlay_stage.tres" id="23_rhhtk"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="23_nca0b"]
 [ext_resource type="PackedScene" uid="uid://c12tht4kio8pw" path="res://Scenes/Section05/S5B1.tscn" id="24_0u2lm"]
-[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/simple_jf_motion_blur.gd" id="24_ti5pw"]
-[ext_resource type="Resource" uid="uid://c10aboaly701b" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_tile_max_x_stage.tres" id="25_cki3b"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="24_px6ke"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="25_8xepq"]
 [ext_resource type="PackedScene" uid="uid://del44lwpj48x1" path="res://Scenes/Section05/S5B2.tscn" id="25_tcv6v"]
-[ext_resource type="Resource" uid="uid://cymk87e4nyxva" path="res://addons/SphynxMotionBlurToolkit/JumpFlood/jump_flood_tile_max_y_stage.tres" id="26_bnivd"]
 [ext_resource type="PackedScene" uid="uid://ckb5gvf1swqgf" path="res://Scenes/Section05/S5Lamps.tscn" id="26_xvk4t"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="26_y8h1w"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="27_8uoq6"]
 [ext_resource type="Resource" uid="uid://o2bivm33b0v4" path="res://addons/SphynxMotionBlurToolkit/Debug/debug_overlay_shader_stage.tres" id="27_64c2v"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/Debug/post_process_debug.gd" id="28_0kqy1"]
+[ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="28_jg1k4"]
 [ext_resource type="CameraAttributesPractical" uid="uid://c5r7ambhbw168" path="res://Resources/BistroCameraAttributesPractical.tres" id="30_pvdv2"]
 [ext_resource type="PackedScene" uid="uid://b5i411e430syd" path="res://Godot-Human-For-Scale/Human-For-Scale.tscn" id="31_gaxn2"]
 [ext_resource type="PackedScene" uid="uid://ckt8i0dx43ex0" path="res://Scenes/UI.tscn" id="32_q35xk"]
@@ -107,24 +107,25 @@ camera_movement_component = ExtResource("17_ruv4l")
 object_movement_component = ExtResource("17_0inj8")
 debug = false
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_nwr6g"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_0qhej"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
 effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = false
-script = ExtResource("24_ti5pw")
-tile_max_x_stage = ExtResource("25_cki3b")
-tile_max_y_stage = ExtResource("26_bnivd")
-construct_stage = ExtResource("21_lt7xq")
-neighbor_max_stage = ExtResource("22_utghc")
-blur_stage = ExtResource("20_g5lhw")
-overlay_stage = ExtResource("23_rhhtk")
-perpen_error_threshold = 0.5
-sample_step_multiplier = 16
-step_exponent_modifier = 1.0
-JFA_pass_count = 3
+script = ExtResource("25_8xepq")
+blur_stage = ExtResource("22_b3byo")
+overlay_stage = ExtResource("24_px6ke")
+tile_max_x_stage = ExtResource("26_y8h1w")
+tile_max_y_stage = ExtResource("27_8uoq6")
+neighbor_max_stage = ExtResource("23_nca0b")
+tile_variance_stage = ExtResource("28_jg1k4")
+tile_size = 40
+linear_falloff_slope = 1.0
+importance_bias = 40.0
+maximum_jitter_value = 0.95
+minimum_user_threshold = 1.5
 samples = 16
 intensity = 1.0
 center_fade = 0.0
@@ -147,7 +148,7 @@ debug_page = 0
 debug = false
 
 [sub_resource type="Compositor" id="Compositor_ak7ke"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_f2hk4"), SubResource("CompositorEffect_nwr6g"), SubResource("CompositorEffect_cphjg")])
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_f2hk4"), SubResource("CompositorEffect_0qhej"), SubResource("CompositorEffect_cphjg")])
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4h6w"]
 size = Vector3(42.825, 3, 85.35)
