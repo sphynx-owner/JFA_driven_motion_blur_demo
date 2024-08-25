@@ -1,4 +1,4 @@
-[gd_scene load_steps=304 format=3 uid="uid://dcgtpj2gjbxgl"]
+[gd_scene load_steps=305 format=3 uid="uid://dcgtpj2gjbxgl"]
 
 [ext_resource type="PackedScene" uid="uid://x65cq1udsqsf" path="res://Scenes/Section01/S1B1.tscn" id="1_17a2u"]
 [ext_resource type="PackedScene" uid="uid://eo1atg6pdllw" path="res://Scenes/Section01/S1B2.tscn" id="2_8mtnr"]
@@ -65,6 +65,7 @@
 [ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="28_jg1k4"]
 [ext_resource type="CameraAttributesPractical" uid="uid://c5r7ambhbw168" path="res://Resources/BistroCameraAttributesPractical.tres" id="30_pvdv2"]
 [ext_resource type="PackedScene" uid="uid://b5i411e430syd" path="res://Godot-Human-For-Scale/Human-For-Scale.tscn" id="31_gaxn2"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="31_wwm2w"]
 [ext_resource type="PackedScene" uid="uid://ckt8i0dx43ex0" path="res://Scenes/UI.tscn" id="32_q35xk"]
 [ext_resource type="ArrayMesh" uid="uid://pw3fun5eaf0n" path="res://Meshes/rounded_cube.obj" id="33_6648h"]
 [ext_resource type="PackedScene" uid="uid://djmap33l1n2u6" path="res://Scenes/Section02/S2Lamps_Props.tscn" id="33_k0qq7"]
@@ -93,7 +94,7 @@
 [ext_resource type="PackedScene" uid="uid://b7j2fy3322mgg" path="res://Meshes/RadialBlurDemo/toy_windmill_scene.tscn" id="84_0ivht"]
 [ext_resource type="Shader" path="res://addons/SphynxMotionBlurToolkit/RadialBlurToolkit/radial_blur_mesh.gdshader" id="90_ff3xo"]
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_f2hk4"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_lwtd4"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
@@ -107,7 +108,7 @@ camera_movement_component = ExtResource("17_ruv4l")
 object_movement_component = ExtResource("17_0inj8")
 debug = false
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_0qhej"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_2qsb8"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
@@ -126,15 +127,9 @@ linear_falloff_slope = 1.0
 importance_bias = 40.0
 maximum_jitter_value = 0.95
 minimum_user_threshold = 1.5
-samples = 16
-intensity = 1.0
-center_fade = 0.0
-framerate_independent = true
-uncapped_independence = false
-target_constant_framerate = 30.0
-debug = false
+debug = true
 
-[sub_resource type="CompositorEffect" id="CompositorEffect_cphjg"]
+[sub_resource type="CompositorEffect" id="CompositorEffect_sebb0"]
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
@@ -147,8 +142,15 @@ draw_debug = false
 debug_page = 0
 debug = false
 
-[sub_resource type="Compositor" id="Compositor_ak7ke"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_f2hk4"), SubResource("CompositorEffect_0qhej"), SubResource("CompositorEffect_cphjg")])
+[sub_resource type="Compositor" id="Compositor_2s5py"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_lwtd4"), SubResource("CompositorEffect_2qsb8"), SubResource("CompositorEffect_sebb0")])
+script = ExtResource("31_wwm2w")
+samples = 16
+intensity = 1.0
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = false
+target_constant_framerate = 30.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_u4h6w"]
 size = Vector3(42.825, 3, 85.35)
@@ -901,7 +903,7 @@ T: Toggle motion blur"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="UI"]
 environment = ExtResource("33_vhloy")
 camera_attributes = ExtResource("30_pvdv2")
-compositor = SubResource("Compositor_ak7ke")
+compositor = SubResource("Compositor_2s5py")
 script = ExtResource("21_i2u6d")
 
 [node name="FogVolume" type="FogVolume" parent="."]
